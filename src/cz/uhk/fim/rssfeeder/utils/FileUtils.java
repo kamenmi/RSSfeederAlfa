@@ -55,11 +55,3 @@ public class FileUtils {
         return sources;
     }
 }
-
-/*
-TODO: if - soubor() x http(s) -> InputSource(Contantains htts)
-replaceAll(";","")
-Load volitelne - bud vybereme load
-Do neděle!!
-
- */

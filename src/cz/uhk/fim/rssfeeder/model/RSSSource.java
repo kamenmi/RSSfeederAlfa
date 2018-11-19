@@ -12,6 +12,7 @@ public class RSSSource{
     }
 
     public RSSSource() {
+
         this("", "");
     }
 

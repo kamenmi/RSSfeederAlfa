@@ -30,15 +30,15 @@ public class WindowRSS extends JDialog {
 //        initContentUI();
 //    }
 
-    public WindowRSS(MainFrame mf, String title){
+    public WindowRSS(MainFrame mf, String title) {
         this(mf, title, new RSSSource());
     }
 
-    public WindowRSS(MainFrame mf, String title, RSSSource selected){
+    public WindowRSS(MainFrame mf, String title, RSSSource selected) {
         super(mf, title, true);
         updatingRSS = selected;
         setLocationRelativeTo(mf);
-        setSize(500, 140);
+        setSize(500, 150);
         //        textFieldLink = new JTextField();
 //        textFieldLink = new JTextField();
         textNazev = updatingRSS.getName();
@@ -113,7 +113,7 @@ public class WindowRSS extends JDialog {
         buttonOK.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if((new RSSSource(textFieldNazev.getText(), textFieldLink.getText()).isValidRSS())){
+                if ((new RSSSource(textFieldNazev.getText(), textFieldLink.getText()).isValidRSS())) {
                     updatingRSS.setName(textFieldNazev.getText());
                     updatingRSS.setSource(textFieldLink.getText());
                 }
