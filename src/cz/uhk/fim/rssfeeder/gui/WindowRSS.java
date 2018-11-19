@@ -1,7 +1,7 @@
 package cz.uhk.fim.rssfeeder.gui;
 
 
-import model.RSSSource;
+import cz.uhk.fim.rssfeeder.model.RSSSource;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,8 +38,8 @@ public class WindowRSS extends JDialog {
         super(mf, title, true);
         updatingRSS = selected;
         setLocationRelativeTo(mf);
-        setSize(500, 120);
-//        textFieldLink = new JTextField();
+        setSize(500, 140);
+        //        textFieldLink = new JTextField();
 //        textFieldLink = new JTextField();
         textNazev = updatingRSS.getName();
         textLink = updatingRSS.getSource();
@@ -92,12 +92,12 @@ public class WindowRSS extends JDialog {
         northPanel.add(textFieldNazev, BorderLayout.SOUTH);
 
         centerPanel.add(linkLink, BorderLayout.NORTH);
+        centerPanel.add(textFieldLink, BorderLayout.CENTER);
 //        centerPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
 
-        southPanel.add(textFieldLink, BorderLayout.NORTH);
         southPanel.add(southBox, BorderLayout.SOUTH);
 
-        setUndecorated(false);
+//        setUndecorated(false);
 
 
 //        setVisible(true);
@@ -128,7 +128,7 @@ public class WindowRSS extends JDialog {
 
     public RSSSource showDialog() {
         setVisible(true);
-//        dlg.setLocationRelativeTo(self); // A model doesn't set its location automatically relative to its parent
+//        dlg.setLocationRelativeTo(self); // A cz.uhk.fim.rssfeeder.model doesn't set its location automatically relative to its parent
 //        dlg.setVisible(true);
         return updatingRSS;
     }

@@ -1,11 +1,11 @@
 package cz.uhk.fim.rssfeeder.gui;
 
-import model.RSSItem;
-import model.RSSItemsList;
-import model.RSSSource;
+import cz.uhk.fim.rssfeeder.model.RSSItem;
+import cz.uhk.fim.rssfeeder.model.RSSItemsList;
+import cz.uhk.fim.rssfeeder.model.RSSSource;
+import cz.uhk.fim.rssfeeder.utils.FileUtils;
+import cz.uhk.fim.rssfeeder.utils.RSSParser;
 import org.xml.sax.SAXException;
-import utils.FileUtils;
-import utils.RSSParser;
 
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
 
     public void init() {
         setTitle("RSSfeeder");
-        setSize(700, 800);
+        setSize(725, 825);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -46,7 +46,7 @@ public class MainFrame extends JFrame {
         JPanel controlPanel = new JPanel(new BorderLayout());
 
 //        RSSSource[] sourcesList = new RSSSource[];
-        Vector sourcesItems=new Vector();
+        Vector sourcesItems = new Vector();
         final DefaultComboBoxModel comboModel = new DefaultComboBoxModel(sourcesItems);
 //        RSSComboModel comboModel = new RSSComboModel(sourcesItems);
         JComboBox<RSSSource> comboBoxRss = new JComboBox<>(comboModel);
@@ -57,7 +57,7 @@ public class MainFrame extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (RSSSource rss: rsslist) {
+        for (RSSSource rss : rsslist) {
             comboModel.addElement(rss);
         }
 
@@ -79,8 +79,8 @@ public class MainFrame extends JFrame {
 //        boxButton.add(load);
 
         // pridani do northPanelu
-        northPanel.add(comboBoxRss,BorderLayout.NORTH);
-        northPanel.add(boxButton,BorderLayout.SOUTH);
+        northPanel.add(comboBoxRss, BorderLayout.NORTH);
+        northPanel.add(boxButton, BorderLayout.SOUTH);
 
 
         add.addMouseListener(new MouseAdapter() {
@@ -92,7 +92,7 @@ public class MainFrame extends JFrame {
 //                String text = dlg.getLink();
                 System.out.println("name " + result.getName());
                 System.out.println("text " + result.getSource());
-                if (result.isValidRSS()){
+                if (result.isValidRSS()) {
                     sourcesItems.addElement(result);
 //                    comboBoxRss.validate();
 //                    comboBoxRss.repaint();
@@ -106,7 +106,7 @@ public class MainFrame extends JFrame {
         edit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(comboBoxRss.getSelectedIndex() == -1){
+                if (comboBoxRss.getSelectedIndex() == -1) {
                     return;
                 }
                 RSSSource item = (RSSSource) comboBoxRss.getSelectedItem();
@@ -127,8 +127,9 @@ public class MainFrame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 RSSSource s1 = new RSSSource("name file", "rss.xml");
+//                RSSSource s1 = new RSSSource("name file", "rss.xml");
                 RSSSource s2 = new RSSSource("name web", "http://www.canaltrans.com/podcast/rssaudio.xml");
-                List sources = new ArrayList<RSSSource> ();
+                List sources = new ArrayList<RSSSource>();
 
                 sources.add(s1);
                 sources.add(s2);
@@ -148,12 +149,11 @@ public class MainFrame extends JFrame {
 //                System.out.println("text " + result.getSource());
                 int selected = comboBoxRss.getSelectedIndex();
                 sourcesItems.remove(selected);
-                if(sourcesItems.size() == 0){
+                if (sourcesItems.size() == 0) {
 
                     fillRSSData(contentPanel, comboBoxRss);
                     comboBoxRss.setSelectedIndex(-1);
-                }
-                else {
+                } else {
                     comboBoxRss.setSelectedIndex(0);
                 }
                 FileUtils.saveSources(sourcesItems);
@@ -162,25 +162,13 @@ public class MainFrame extends JFrame {
             }
         });
 
-        comboBoxRss.addActionListener (new ActionListener () {
+        comboBoxRss.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 //                RSSSource selected = comboModel.getSelectedItem();
 //                String src = selected.getSource();
                 fillRSSData(contentPanel, comboBoxRss);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -263,8 +251,8 @@ public class MainFrame extends JFrame {
         });*/
     }
 
-    private void fillRSSData(JPanel contentPanel, JComboBox comboModel){
-        if (comboModel.getItemCount() == 0){
+    private void fillRSSData(JPanel contentPanel, JComboBox comboModel) {
+        if (comboModel.getItemCount() == 0) {
             contentPanel.removeAll();
             contentPanel.add(new JLabel("No Data."));
             contentPanel.validate();
@@ -272,7 +260,7 @@ public class MainFrame extends JFrame {
             return;
         }
         try {
-            rssList = new RSSParser().getParsedRSS(((RSSSource)comboModel.getSelectedItem()).getSource());
+            rssList = new RSSParser().getParsedRSS(((RSSSource) comboModel.getSelectedItem()).getSource());
 
             contentPanel.removeAll();
             for (RSSItem item : rssList.getAllItem()) {

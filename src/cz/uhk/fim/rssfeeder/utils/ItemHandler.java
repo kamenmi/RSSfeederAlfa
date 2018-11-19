@@ -1,7 +1,7 @@
-package utils;
+package cz.uhk.fim.rssfeeder.utils;
 
-import model.RSSItem;
-import model.RSSItemsList;
+import cz.uhk.fim.rssfeeder.model.RSSItem;
+import cz.uhk.fim.rssfeeder.model.RSSItemsList;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 

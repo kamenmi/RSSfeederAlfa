@@ -1,6 +1,6 @@
-package utils;
+package cz.uhk.fim.rssfeeder.utils;
 
-import model.RSSSource;
+import cz.uhk.fim.rssfeeder.model.RSSSource;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package cz.uhk.fim.rssfeeder.gui;
 
-import model.RSSSource;
+import cz.uhk.fim.rssfeeder.model.RSSSource;
 
 import javax.swing.*;
 import java.util.Vector;

@@ -1,4 +1,4 @@
-package model;
+package cz.uhk.fim.rssfeeder.model;
 
 import java.util.ArrayList;
 import java.util.List;

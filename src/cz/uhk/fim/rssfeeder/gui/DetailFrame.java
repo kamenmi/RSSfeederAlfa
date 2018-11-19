@@ -1,6 +1,6 @@
 package cz.uhk.fim.rssfeeder.gui;
 
-import model.RSSItem;
+import cz.uhk.fim.rssfeeder.model.RSSItem;
 
 import javax.swing.*;
 import java.awt.*;

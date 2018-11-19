@@ -1,4 +1,4 @@
-package model;
+package cz.uhk.fim.rssfeeder.model;
 
 public class RSSItem {
     private String title;

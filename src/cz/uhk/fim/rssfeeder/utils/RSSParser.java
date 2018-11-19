@@ -1,6 +1,6 @@
-package utils;
+package cz.uhk.fim.rssfeeder.utils;
 
-import model.RSSItemsList;
+import cz.uhk.fim.rssfeeder.model.RSSItemsList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
